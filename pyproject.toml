@@ -1,0 +1,22 @@
+[project]
+name = "rehab-app-ingestion"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.uv]
+dev-dependencies = [
+  "pytest",
+  "pytest-asyncio",
+  "ruff",
+  "mypy",
+  "httpx",
+  "types-requests"
+]
+
+[tool.uv.workspace]
+members = [
+  "packages/common",
+  "packages/npi-puller",
+  "packages/enricher",
+  "packages/admin-api"
+]
