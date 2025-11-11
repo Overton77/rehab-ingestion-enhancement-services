@@ -11,6 +11,15 @@ dependencies = [
     "sqlalchemy>=2.0.0",
     "pydantic>=2",
     "pydantic-settings>=2",
+    "sqlmodel>=0.0.27",
+    "alembic>=1.17.1",
+    "asyncpg>=0.30.0",
+    "python-dotenv>=1.2.1",
+    "psycopg2-binary>=2.9.11",
+    "prisma",
+    "prisma-client",
+    "ariadne-codegen>=0.16.0",
+    "pandas>=2.3.3",
 ]
 
 [build-system]
@@ -19,4 +28,10 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["rehab_common"]
+
+[tool.ariadne-codegen]
+schema_path  = "rehab_common/graphql/schema.graphql"
+queries_path = "rehab_common/graphql/resolvers.graphql"
+target_path  = "rehab_common/graphql_client"
+client_name  = "RehabApiClient" 
 

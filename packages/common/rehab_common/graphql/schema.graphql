@@ -1,0 +1,106 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateInsuranceProviderInput {
+  eligibility: String
+  payer_code: String!
+  payer_name: String!
+  type: String
+}
+
+input CreateProspectiveRehabInput {
+  address: String
+  city: String
+  ingested: Boolean! = false
+  last_updated: DateTime
+  npi_number: String!
+  organization_name: String!
+  phone: String
+  postal_code: String
+  state: String
+  taxonomy_code: String
+  taxonomy_desc: String
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+type InsuranceProviderGQL {
+  eligibility: String
+  id: Int!
+  payer_code: String!
+  payer_name: String!
+  type: String
+}
+
+type Mutation {
+  createInsuranceProvider(
+    data: CreateInsuranceProviderInput!
+  ): InsuranceProviderGQL!
+  createManyRehabs(data: [CreateProspectiveRehabInput!]!): [ProspectiveRehab!]!
+  createRehab(data: CreateProspectiveRehabInput!): ProspectiveRehab!
+  deleteInsuranceProvider(id: Int!): InsuranceProviderGQL!
+  deleteRehab(id: Int!): ProspectiveRehab!
+  updateInsuranceProvider(
+    data: UpdateInsuranceProviderInput!
+    id: Int!
+  ): InsuranceProviderGQL!
+  updateRehab(data: UpdateProspectiveRehabInput!, id: Int!): ProspectiveRehab!
+}
+
+type ProspectiveRehab {
+  address: String
+  city: String
+  id: Int!
+  ingested: Boolean!
+  last_updated: DateTime
+  npi_number: String!
+  organization_name: String!
+  phone: String
+  postal_code: String
+  state: String
+  taxonomy_code: String
+  taxonomy_desc: String
+}
+
+type Query {
+  """
+  Simple health check
+  """
+  health: String!
+  insuranceProvider(id: Int!): InsuranceProviderGQL
+  insuranceProviders(
+    search: String
+    skip: Int
+    take: Int
+  ): [InsuranceProviderGQL!]!
+  rehab(id: Int!): ProspectiveRehab
+  rehabs(
+    cursorId: Int
+    search: String
+    skip: Int
+    take: Int
+  ): [ProspectiveRehab!]!
+}
+
+input UpdateInsuranceProviderInput {
+  eligibility: String
+  payer_name: String
+  type: String
+}
+
+input UpdateProspectiveRehabInput {
+  address: String
+  city: String
+  ingested: Boolean
+  last_updated: DateTime
+  organization_name: String
+  phone: String
+  postal_code: String
+  state: String
+  taxonomy_code: String
+  taxonomy_desc: String
+}

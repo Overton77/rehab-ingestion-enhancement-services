@@ -1,0 +1,166 @@
+query GetRehabs($search: String, $skip: Int, $take: Int, $cursorId: Int) {
+  rehabs(search: $search, skip: $skip, take: $take, cursorId: $cursorId) {
+    id
+    npi_number
+    organization_name
+    address
+    city
+    state
+    postal_code
+    phone
+    taxonomy_code
+    taxonomy_desc
+    last_updated
+    ingested
+  }
+}
+
+query GetRehabById($id: Int!) {
+  rehab(id: $id) {
+    id
+    npi_number
+    organization_name
+    address
+    city
+    state
+    postal_code
+    phone
+    taxonomy_code
+    taxonomy_desc
+    last_updated
+    ingested
+  }
+}
+
+# ============================
+# Prospective Rehab MUTATIONS
+# ============================
+
+mutation CreateRehab($data: CreateProspectiveRehabInput!) {
+  createRehab(data: $data) {
+    id
+    npi_number
+    organization_name
+    address
+    city
+    state
+    postal_code
+    phone
+    taxonomy_code
+    taxonomy_desc
+    last_updated
+    ingested
+  }
+}
+
+mutation CreateManyRehabs($data: [CreateProspectiveRehabInput!]!) {
+  createManyRehabs(data: $data) {
+    id
+    npi_number
+    organization_name
+    address
+    city
+    state
+    postal_code
+    phone
+    taxonomy_code
+    taxonomy_desc
+    last_updated
+    ingested
+  }
+}
+
+mutation UpdateRehab($id: Int!, $data: UpdateProspectiveRehabInput!) {
+  updateRehab(id: $id, data: $data) {
+    id
+    npi_number
+    organization_name
+    address
+    city
+    state
+    postal_code
+    phone
+    taxonomy_code
+    taxonomy_desc
+    last_updated
+    ingested
+  }
+}
+
+mutation DeleteRehab($id: Int!) {
+  deleteRehab(id: $id) {
+    id
+    npi_number
+    organization_name
+    address
+    city
+    state
+    postal_code
+    phone
+    taxonomy_code
+    taxonomy_desc
+    last_updated
+    ingested
+  }
+}
+
+# ============================
+# Insurance Provider QUERIES
+# ============================
+
+query GetInsuranceProviders($search: String, $skip: Int, $take: Int) {
+  insuranceProviders(search: $search, skip: $skip, take: $take) {
+    id
+    payer_code
+    payer_name
+    eligibility
+    type
+  }
+}
+
+query GetInsuranceProviderById($id: Int!) {
+  insuranceProvider(id: $id) {
+    id
+    payer_code
+    payer_name
+    eligibility
+    type
+  }
+}
+
+# ============================
+# Insurance Provider MUTATIONS
+# ============================
+
+mutation CreateInsuranceProvider($data: CreateInsuranceProviderInput!) {
+  createInsuranceProvider(data: $data) {
+    id
+    payer_code
+    payer_name
+    eligibility
+    type
+  }
+}
+
+mutation UpdateInsuranceProvider(
+  $id: Int!
+  $data: UpdateInsuranceProviderInput!
+) {
+  updateInsuranceProvider(id: $id, data: $data) {
+    id
+    payer_code
+    payer_name
+    eligibility
+    type
+  }
+}
+
+mutation DeleteInsuranceProvider($id: Int!) {
+  deleteInsuranceProvider(id: $id) {
+    id
+    payer_code
+    payer_name
+    eligibility
+    type
+  }
+}
