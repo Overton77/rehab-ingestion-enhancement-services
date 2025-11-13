@@ -15,7 +15,7 @@ dev-dependencies = [
 
 [tool.uv.workspace]
 members = [
-  "packages/common",
+  "packages/common", 
   "packages/npi-puller",
   "packages/enricher",
   "packages/admin-api"

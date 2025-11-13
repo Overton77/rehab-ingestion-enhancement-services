@@ -22,7 +22,8 @@ dependencies = [
 rehab-npi-puller = "rehab_npi_puller.__main__:main"
 
 [tool.uv.sources]
-rehab-common = { workspace = true }
+rehab-common = { workspace = true } 
+
 
 [build-system]
 requires = ["hatchling"]
