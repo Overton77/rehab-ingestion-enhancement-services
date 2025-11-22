@@ -2,6 +2,132 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Accreditation {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input AccreditationConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input AccreditationCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input AccreditationCreateManyInput {
+  items: [AccreditationCreateInput!]!
+}
+
+type Amenity {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input AmenityConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input AmenityCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input AmenityCreateManyInput {
+  items: [AmenityCreateInput!]!
+}
+
+input BooleanFilter {
+  equals: Boolean
+}
+
+type CampusReview {
+  body: String!
+  campusId: String!
+  createdAt: DateTime!
+  externalUrl: String
+  id: ID!
+  isFeatured: Boolean!
+  isVerified: Boolean!
+  rating: Int!
+  reviewerName: String
+  reviewerRole: String
+  reviewerType: ReviewerType!
+  source: ReviewSource!
+  title: String
+  updatedAt: DateTime!
+}
+
+input CampusReviewCreateInput {
+  body: String!
+  externalUrl: String
+  isFeatured: Boolean
+  isVerified: Boolean
+  rating: Int!
+  reviewerName: String
+  reviewerRole: String
+  reviewerType: ReviewerType
+  source: ReviewSource
+  title: String
+}
+
+type CampusStory {
+  body: String!
+  campusId: String!
+  createdAt: DateTime!
+  id: ID!
+  isFeatured: Boolean!
+  isPublic: Boolean!
+  slug: String!
+  storyType: StoryType!
+  summary: String
+  tags: [String!]!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CampusStoryCreateInput {
+  body: String!
+  isFeatured: Boolean
+  isPublic: Boolean
+  slug: String!
+  storyType: StoryType
+  summary: String
+  tags: [String!]
+  title: String!
+}
+
+type CampusTestimonial {
+  attributionName: String
+  attributionRole: String
+  campusId: String!
+  createdAt: DateTime!
+  id: ID!
+  isFeatured: Boolean!
+  quote: String!
+  source: String
+  updatedAt: DateTime!
+}
+
+input CampusTestimonialCreateInput {
+  attributionName: String
+  attributionRole: String
+  isFeatured: Boolean
+  quote: String!
+  source: String
+}
+
 input CreateInsuranceProviderInput {
   eligibility: String
   payer_code: String!
@@ -23,10 +149,226 @@ input CreateProspectiveRehabInput {
   taxonomy_desc: String
 }
 
+input CreateRehabCampusInput {
+  acceptsWalkIns: Boolean
+  amenities: [AmenityConnectOrCreateInput!]
+  bedsDetox: Int
+  bedsOutpatientCapacity: Int
+  bedsResidential: Int
+  bedsTotal: Int
+  city: String!
+  country: String!
+  description: String
+  directionsSummary: String
+  displayName: String
+  email: String
+  environments: [EnvironmentConnectOrCreateInput!]
+  galleryImageUrls: [String!]
+  hasOnsiteMD: Boolean
+  hasTwentyFourHourNursing: Boolean
+  heroImageUrl: String
+  languages: [LanguageConnectOrCreateInput!]
+  latitude: Float
+  longitude: Float
+  luxuryTiers: [LuxuryTierConnectOrCreateInput!]
+  name: String!
+  phone: String
+  populations: [PopulationConnectOrCreateInput!]
+  postalCode: String!
+  primaryEnvironmentSlug: String
+  primaryLuxuryTierSlug: String
+  primarySettingStyleSlug: String
+  rehabOrgId: String
+  rehabOrgSlug: String
+  reviews: [CampusReviewCreateInput!]
+  settingStyles: [SettingStyleConnectOrCreateInput!]
+  slug: String!
+  socialMediaProfiles: [SocialMediaProfileConnectOrCreateInput!]
+  state: String!
+  stories: [CampusStoryCreateInput!]
+  street: String!
+  testimonials: [CampusTestimonialCreateInput!]
+  timeZone: String
+  visitingHours: String
+}
+
+input CreateRehabOrgInput {
+  accreditations: [AccreditationConnectOrCreateInput!]
+  amenities: [AmenityConnectOrCreateInput!]
+  baseCurrency: String
+  campuses: [RehabCampusConnectOrCreateInput!]
+  city: String
+  country: String
+  defaultTimeZone: String
+  description: String
+  detoxServices: [DetoxServiceConnectOrCreateInput!]
+  environments: [EnvironmentConnectOrCreateInput!]
+  fullPrivatePrice: Int
+  galleryImageUrls: [String!]
+  heroImageUrl: String
+  insurancePayers: [RehabInsurancePayerConnectOrCreateInput!]
+  isNonProfit: Boolean
+  languages: [LanguageConnectOrCreateInput!]
+  legalName: String
+  levelsOfCare: [LevelOfCareConnectOrCreateInput!]
+  luxuryTiers: [LuxuryTierConnectOrCreateInput!]
+  mainEmail: String
+  mainPhone: String
+  name: String!
+  npi_number: String
+  otherSourceUrls: [String!]
+  parentCompany: ParentCompanyConnectOrCreateInput
+  paymentOptions: [RehabPaymentOptionConnectOrCreateInput!]
+  populations: [PopulationConnectOrCreateInput!]
+  primarySourceUrl: String
+  programFeaturesGlobal: [ProgramFeatureGlobalConnectOrCreateInput!]
+  reviews: [OrgReviewCreateInput!]
+  services: [ServiceConnectOrCreateInput!]
+  settingStyles: [SettingStyleConnectOrCreateInput!]
+  slug: String!
+  socialMediaProfiles: [SocialMediaProfileConnectOrCreateInput!]
+  state: String
+  stories: [OrgStoryCreateInput!]
+  tagline: String
+  testimonials: [OrgTestimonialCreateInput!]
+  verifiedExists: Boolean
+  websiteUrl: String
+  yearFounded: Int
+  youtubeChannels: [YoutubeChannelConnectOrCreateInput!]
+  zip: String
+}
+
+input CreateRehabProgramInput {
+  acceptsCourtOrdered: Boolean
+  acceptsMedicallyComplex: Boolean
+  acceptsSelfReferral: Boolean
+  amenities: [AmenityConnectOrCreateInput!]
+  campusId: String
+  campusSlug: String
+  checkInDays: [String!]
+  clinicalFocusSummary: String
+  description: String
+  detoxServices: [DetoxServiceConnectOrCreateInput!]
+  features: [ProgramFeatureGlobalConnectOrCreateInput!]
+  galleryImageUrls: [String!]
+  hasOnsiteMD: Boolean
+  hasTwentyFourHourNursing: Boolean
+  heroImageUrl: String
+  intakeEmail: String
+  intakePhone: String
+  isDetoxPrimary: Boolean
+  isMATProgram: Boolean
+  languages: [LanguageConnectOrCreateInput!]
+  levelOfCareSlug: String!
+  matTypes: [MATTypeConnectOrCreateInput!]
+  maxLengthOfStayDays: Int
+  minLengthOfStayDays: Int
+  name: String!
+  populations: [PopulationConnectOrCreateInput!]
+  reviews: [ProgramReviewCreateInput!]
+  services: [ServiceConnectOrCreateInput!]
+  sessionScheduleSummary: String
+  shortName: String
+  slug: String!
+  staffToPatientRatio: Float
+  stories: [ProgramStoryCreateInput!]
+  substances: [SubstanceConnectOrCreateInput!]
+  targetPopulationSummary: String
+  testimonials: [ProgramTestimonialCreateInput!]
+  typicalLengthOfStayDays: Int
+  waitlistCategory: WaitlistCategory
+  waitlistDescription: String
+}
+
 """
-A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type DeleteResult {
+  id: ID!
+}
+
+type DetoxService {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input DetoxServiceConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input DetoxServiceCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input DetoxServiceCreateManyInput {
+  items: [DetoxServiceCreateInput!]!
+}
+
+type Environment {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input EnvironmentConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input EnvironmentCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input EnvironmentCreateManyInput {
+  items: [EnvironmentCreateInput!]!
+}
+
+input FloatRangeFilter {
+  max: Float
+  min: Float
+}
+
+type InsurancePayer {
+  companyName: String!
+  description: String
+  displayName: String!
+  id: ID!
+  payerType: String
+  slug: String!
+}
+
+input InsurancePayerConnectOrCreateInput {
+  companyName: String
+  description: String
+  displayName: String
+  id: String
+  payerType: String
+  slug: String
+}
+
+input InsurancePayerCreateInput {
+  companyName: String!
+  description: String
+  displayName: String!
+  payerType: String
+  slug: String!
+}
+
+input InsurancePayerCreateManyInput {
+  items: [InsurancePayerCreateInput!]!
+}
 
 type InsuranceProviderGQL {
   eligibility: String
@@ -36,19 +378,490 @@ type InsuranceProviderGQL {
   type: String
 }
 
+enum InsuranceScope {
+  CAMPUS
+  ORG
+  PROGRAM
+}
+
+input IntRangeFilter {
+  max: Int
+  min: Int
+}
+
+type Language {
+  code: String!
+  description: String
+  displayName: String!
+  id: ID!
+}
+
+input LanguageConnectOrCreateInput {
+  code: String!
+  description: String
+  displayName: String
+}
+
+input LanguageCreateInput {
+  code: String!
+  description: String
+  displayName: String!
+}
+
+input LanguageCreateManyInput {
+  items: [LanguageCreateInput!]!
+}
+
+type LevelOfCare {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+  type: LevelOfCareType!
+}
+
+input LevelOfCareConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+  type: LevelOfCareType
+}
+
+input LevelOfCareCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+  type: LevelOfCareType
+}
+
+input LevelOfCareCreateManyInput {
+  items: [LevelOfCareCreateInput!]!
+}
+
+enum LevelOfCareType {
+  AFTERCARE
+  DETOX
+  IOP
+  OTHER
+  OUTPATIENT
+  PHP
+  RESIDENTIAL
+  SOBER_LIVING
+  TELEHEALTH
+}
+
+type LuxuryTier {
+  description: String
+  displayName: String!
+  id: ID!
+  rank: Int
+  slug: String!
+}
+
+input LuxuryTierConnectOrCreateInput {
+  description: String
+  displayName: String
+  rank: Int
+  slug: String!
+}
+
+input LuxuryTierCreateInput {
+  description: String
+  displayName: String!
+  rank: Int
+  slug: String!
+}
+
+input LuxuryTierCreateManyInput {
+  items: [LuxuryTierCreateInput!]!
+}
+
+type MATType {
+  description: String
+  displayName: String!
+  id: ID!
+  medicationClass: String
+  slug: String!
+}
+
+input MATTypeConnectOrCreateInput {
+  description: String
+  displayName: String
+  medicationClass: String
+  slug: String!
+}
+
+input MATTypeCreateInput {
+  description: String
+  displayName: String!
+  medicationClass: String
+  slug: String!
+}
+
+input MATTypeCreateManyInput {
+  items: [MATTypeCreateInput!]!
+}
+
 type Mutation {
   createInsuranceProvider(
     data: CreateInsuranceProviderInput!
   ): InsuranceProviderGQL!
-  createManyRehabs(data: [CreateProspectiveRehabInput!]!): [ProspectiveRehab!]!
-  createRehab(data: CreateProspectiveRehabInput!): ProspectiveRehab!
+  createManyAccreditation(
+    input: AccreditationCreateManyInput!
+  ): [Accreditation!]!
+  createManyAmenity(input: AmenityCreateManyInput!): [Amenity!]!
+  createManyDetoxService(input: DetoxServiceCreateManyInput!): [DetoxService!]!
+  createManyEnvironment(input: EnvironmentCreateManyInput!): [Environment!]!
+  createManyInsurancePayer(
+    input: InsurancePayerCreateManyInput!
+  ): [InsurancePayer!]!
+  createManyLanguage(input: LanguageCreateManyInput!): [Language!]!
+  createManyLevelOfCare(input: LevelOfCareCreateManyInput!): [LevelOfCare!]!
+  createManyLuxuryTier(input: LuxuryTierCreateManyInput!): [LuxuryTier!]!
+  createManyMATType(input: MATTypeCreateManyInput!): [MATType!]!
+  createManyPaymentOption(
+    input: PaymentOptionCreateManyInput!
+  ): [PaymentOption!]!
+  createManyPopulation(input: PopulationCreateManyInput!): [Population!]!
+  createManyProgramFeature(
+    input: ProgramFeatureCreateManyInput!
+  ): [ProgramFeature!]!
+  createManyProspectiveRehabs(
+    data: [CreateProspectiveRehabInput!]!
+  ): [ProspectiveRehab!]!
+  createManyService(input: ServiceCreateManyInput!): [Service!]!
+  createManySettingStyle(input: SettingStyleCreateManyInput!): [SettingStyle!]!
+  createManySubstance(input: SubstanceCreateManyInput!): [Substance!]!
+  createProspectiveRehab(data: CreateProspectiveRehabInput!): ProspectiveRehab!
+
+  """
+  Create a new Rehab Campus with connect or create
+  """
+  createRehabCampusWithConnectOrCreate(
+    data: CreateRehabCampusInput!
+  ): RehabCampus!
+
+  """
+  Create a new facility which creates new relationships (NOT connectOrCreate)
+  """
+  createRehabOrgWithConnectOrCreate(data: CreateRehabOrgInput!): RehabOrg!
+
+  """
+  Create a new rehab program and its nested relationships using connectOrCreate semantics
+  """
+  createRehabProgramWithConnectOrCreate(
+    data: CreateRehabProgramInput!
+  ): RehabProgram!
   deleteInsuranceProvider(id: Int!): InsuranceProviderGQL!
-  deleteRehab(id: Int!): ProspectiveRehab!
+  deleteProspectiveRehab(id: Int!): ProspectiveRehab!
+  deleteRehab(id: String!): DeleteResult!
+
+  """
+  Delete  Rehab Campus
+  """
+  deleteRehabCampus(id: ID!): DeleteResult!
+
+  """
+  Delete a rehab program by id
+  """
+  deleteRehabProgram(id: String!): DeleteResult!
   updateInsuranceProvider(
     data: UpdateInsuranceProviderInput!
     id: Int!
   ): InsuranceProviderGQL!
-  updateRehab(data: UpdateProspectiveRehabInput!, id: Int!): ProspectiveRehab!
+  updateProspectiveRehab(
+    data: UpdateProspectiveRehabInput!
+    id: Int!
+  ): ProspectiveRehab!
+
+  """
+  Upsert a Rehab Campus With Connect or create
+  """
+  upsertRehabCampusWithConnectOrCreate(
+    data: UpsertRehabCampusInput!
+  ): RehabCampus!
+
+  """
+  Upsert a RehabOrg with nested ConnectOrCreate
+  """
+  upsertRehabOrgWithConnectOrCreate(data: UpsertRehabOrgInput!): RehabOrg!
+
+  """
+  Upsert a rehab program by id, allowing partial updates and nested connectOrCreate for vocab and joins
+  """
+  upsertRehabProgramWithConnectOrCreate(
+    data: UpsertRehabProgramInput!
+  ): RehabProgram!
+}
+
+enum NetworkStatus {
+  CASE_BY_CASE
+  IN_NETWORK
+  OUT_OF_NETWORK
+  UNKNOWN
+}
+
+type OrgReview {
+  body: String!
+  createdAt: DateTime!
+  externalUrl: String
+  id: ID!
+  isFeatured: Boolean!
+  isVerified: Boolean!
+  rating: Int!
+  rehabOrgId: String!
+  reviewerName: String
+  reviewerRole: String
+  reviewerType: ReviewerType!
+  source: ReviewSource!
+  title: String
+  updatedAt: DateTime!
+}
+
+input OrgReviewCreateInput {
+  body: String!
+  externalUrl: String
+  isFeatured: Boolean
+  isVerified: Boolean
+  rating: Int!
+  reviewerName: String
+  reviewerRole: String
+  reviewerType: ReviewerType
+  source: ReviewSource
+  title: String
+}
+
+type OrgStory {
+  body: String!
+  createdAt: DateTime!
+  id: ID!
+  isFeatured: Boolean!
+  isPublic: Boolean!
+  rehabOrgId: String!
+  slug: String!
+  storyType: StoryType!
+  summary: String
+  tags: [String!]!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input OrgStoryCreateInput {
+  body: String!
+  isFeatured: Boolean
+  isPublic: Boolean
+  slug: String!
+  storyType: StoryType
+  summary: String
+  tags: [String!]
+  title: String!
+}
+
+type OrgTestimonial {
+  attributionName: String
+  attributionRole: String
+  createdAt: DateTime!
+  id: ID!
+  isFeatured: Boolean!
+  quote: String!
+  rehabOrgId: String!
+  source: String
+  updatedAt: DateTime!
+}
+
+input OrgTestimonialCreateInput {
+  attributionName: String
+  attributionRole: String
+  isFeatured: Boolean
+  quote: String!
+  source: String
+}
+
+type ParentCompany {
+  createdAt: DateTime!
+  description: String
+  headquartersCity: String
+  headquartersCountry: String
+  headquartersPostalCode: String
+  headquartersState: String
+  headquartersStreet: String
+  heroImageUrl: String
+  id: ID!
+  name: String!
+  rehabOrgs: [RehabOrg!]
+  slug: String!
+  socialMediaProfiles: [SocialMediaProfile!]
+  updatedAt: DateTime!
+  verifiedExists: Boolean!
+  websiteUrl: String
+  youtubeChannels: [YoutubeChannel!]
+}
+
+input ParentCompanyConnectOrCreateInput {
+  description: String
+  headquartersCity: String
+  headquartersCountry: String
+  headquartersPostalCode: String
+  headquartersState: String
+  headquartersStreet: String
+  id: String
+  name: String
+  slug: String
+  verifiedExists: Boolean
+  websiteUrl: String
+}
+
+type PaymentOption {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input PaymentOptionConnectOrCreateInput {
+  description: String
+  displayName: String
+  id: String
+  slug: String
+}
+
+input PaymentOptionCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input PaymentOptionCreateManyInput {
+  items: [PaymentOptionCreateInput!]!
+}
+
+type Population {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input PopulationConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input PopulationCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input PopulationCreateManyInput {
+  items: [PopulationCreateInput!]!
+}
+
+type ProgramFeature {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input ProgramFeatureConnectOrCreateInput {
+  description: String
+  displayName: String
+  id: String
+  slug: String
+}
+
+input ProgramFeatureCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input ProgramFeatureCreateManyInput {
+  items: [ProgramFeatureCreateInput!]!
+}
+
+input ProgramFeatureGlobalConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+type ProgramReview {
+  body: String!
+  createdAt: DateTime!
+  externalUrl: String
+  id: ID!
+  isFeatured: Boolean!
+  isVerified: Boolean!
+  programId: String!
+  rating: Int!
+  reviewerName: String
+  reviewerRole: String
+  reviewerType: ReviewerType!
+  source: ReviewSource!
+  title: String
+  updatedAt: DateTime!
+}
+
+input ProgramReviewCreateInput {
+  body: String!
+  externalUrl: String
+  isFeatured: Boolean
+  isVerified: Boolean
+  rating: Int!
+  reviewerName: String
+  reviewerRole: String
+  reviewerType: ReviewerType
+  source: ReviewSource
+  title: String
+}
+
+type ProgramStory {
+  body: String!
+  createdAt: DateTime!
+  id: ID!
+  isFeatured: Boolean!
+  isPublic: Boolean!
+  programId: String!
+  slug: String!
+  storyType: StoryType!
+  summary: String
+  tags: [String!]!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input ProgramStoryCreateInput {
+  body: String!
+  isFeatured: Boolean
+  isPublic: Boolean
+  slug: String!
+  storyType: StoryType
+  summary: String
+  tags: [String!]
+  title: String!
+}
+
+type ProgramTestimonial {
+  attributionName: String
+  attributionRole: String
+  createdAt: DateTime!
+  id: ID!
+  isFeatured: Boolean!
+  programId: String!
+  quote: String!
+  source: String
+  updatedAt: DateTime!
+}
+
+input ProgramTestimonialCreateInput {
+  attributionName: String
+  attributionRole: String
+  isFeatured: Boolean
+  quote: String!
+  source: String
 }
 
 type ProspectiveRehab {
@@ -67,23 +880,695 @@ type ProspectiveRehab {
 }
 
 type Query {
+  accreditations: [Accreditation!]!
+  amenities: [Amenity!]!
+  detoxServices: [DetoxService!]!
+  environments: [Environment!]!
+
+  """
+  Find many rehab campus with extensive filters
+  """
+  findManyRehabCampuses(data: RehabCampusFilterInput!): [RehabCampus!]!
+  findManyRehabOrgs(data: RehabOrgFilterInput!): [RehabOrg!]!
+
+  """
+  Find many rehab programs using complex filters
+  """
+  findManyRehabPrograms(data: RehabProgramFilterInput): [RehabProgram!]!
+
+  """
+  Find Rehab Campus By ID
+  """
+  findRehabCampusById(id: String!): RehabCampus!
+  findRehabOrgById(id: String!): RehabOrg!
+
+  """
+  Find a single rehab program by id
+  """
+  findRehabProgramById(id: String!): RehabProgram!
+
   """
   Simple health check
   """
   health: String!
+  insurancePayers: [InsurancePayer!]!
   insuranceProvider(id: Int!): InsuranceProviderGQL
   insuranceProviders(
     search: String
     skip: Int
     take: Int
   ): [InsuranceProviderGQL!]!
-  rehab(id: Int!): ProspectiveRehab
-  rehabs(
+  languages: [Language!]!
+  levelOfCares: [LevelOfCare!]!
+  luxuryTiers: [LuxuryTier!]!
+  matTypes: [MATType!]!
+  paymentOptions: [PaymentOption!]!
+  populations: [Population!]!
+  programFeatures: [ProgramFeature!]!
+  prospectiveRehab(id: Int!): ProspectiveRehab
+  prospectiveRehabs(
     cursorId: Int
     search: String
     skip: Int
     take: Int
   ): [ProspectiveRehab!]!
+  services: [Service!]!
+  settingStyles: [SettingStyle!]!
+  substances: [Substance!]!
+}
+
+type RehabAccreditation {
+  accreditation: Accreditation
+  accreditationId: String!
+  rehabId: String!
+}
+
+type RehabAmenity {
+  amenity: Amenity
+  amenityId: String!
+  rehabId: String!
+}
+
+type RehabCampus {
+  acceptsWalkIns: Boolean
+  bedsDetox: Int
+  bedsOutpatientCapacity: Int
+  bedsResidential: Int
+  bedsTotal: Int
+  campusAmenities: [RehabCampusAmenity!]
+  campusEnvironments: [RehabCampusEnvironment!]
+  campusLanguages: [RehabCampusLanguage!]
+  campusLuxuryTiers: [RehabCampusLuxuryTier!]
+  campusPopulations: [RehabCampusPopulation!]
+  campusReviews: [CampusReview!]
+  campusSettingStyles: [RehabCampusSettingStyle!]
+  campusStories: [CampusStory!]
+  campusTestimonials: [CampusTestimonial!]
+  city: String!
+  country: String!
+  createdAt: DateTime!
+  description: String
+  directionsSummary: String
+  displayName: String
+  email: String
+  galleryImageUrls: [String!]
+  hasOnsiteMD: Boolean
+  hasTwentyFourHourNursing: Boolean
+  heroImageUrl: String
+  id: ID!
+  latitude: Float
+  longitude: Float
+  name: String!
+  phone: String
+  postalCode: String!
+  primaryEnvironment: Environment
+  primaryEnvironmentId: String
+  primaryLuxuryTier: LuxuryTier
+  primaryLuxuryTierId: String
+  primarySettingStyle: SettingStyle
+  primarySettingStyleId: String
+  programs: [RehabProgram!]
+  rehabOrg: RehabOrg
+  rehabOrgId: String!
+  slug: String!
+  socialMediaProfiles: [SocialMediaProfile!]
+  state: String!
+  street: String!
+  timeZone: String
+  updatedAt: DateTime!
+  visitingHours: String
+}
+
+type RehabCampusAmenity {
+  amenity: Amenity
+  amenityId: String!
+  campusId: String!
+}
+
+input RehabCampusConnectOrCreateInput {
+  create: RehabCampusCreateForOrgInput
+  id: String
+  slug: String
+}
+
+input RehabCampusCreateForOrgInput {
+  acceptsWalkIns: Boolean
+  bedsDetox: Int
+  bedsOutpatientCapacity: Int
+  bedsResidential: Int
+  bedsTotal: Int
+  city: String!
+  country: String!
+  description: String
+  directionsSummary: String
+  displayName: String
+  email: String
+  galleryImageUrls: [String!]
+  hasOnsiteMD: Boolean
+  hasTwentyFourHourNursing: Boolean
+  heroImageUrl: String
+  latitude: Float
+  longitude: Float
+  name: String!
+  phone: String
+  postalCode: String!
+  primaryEnvironmentSlug: String
+  primaryLuxuryTierSlug: String
+  primarySettingStyleSlug: String
+  slug: String!
+  state: String!
+  street: String!
+  timeZone: String
+  visitingHours: String
+}
+
+type RehabCampusEnvironment {
+  campusId: String!
+  environment: Environment
+  environmentId: String!
+}
+
+input RehabCampusFilterInput {
+  acceptsWalkIns: BooleanFilter
+  bedsDetox: IntRangeFilter
+  bedsOutpatientCapacity: IntRangeFilter
+  bedsResidential: IntRangeFilter
+  bedsTotal: IntRangeFilter
+  campusAmenityIds: [String!]
+  campusEnvironmentIds: [String!]
+  campusLanguageIds: [String!]
+  campusLuxuryTierIds: [String!]
+  campusPopulationIds: [String!]
+  campusSettingStyleIds: [String!]
+  cities: [String!]
+  countries: [String!]
+  hasOnsiteMD: BooleanFilter
+  hasTwentyFourHourNursing: BooleanFilter
+  ids: [ID!]
+  insurancePayerIds: [String!]
+  nearLat: Float
+  nearLng: Float
+  paymentOptionIds: [String!]
+  postalCodes: [String!]
+  primaryEnvironmentIds: [String!]
+  primaryLuxuryTierIds: [String!]
+  primarySettingStyleIds: [String!]
+  programAmenityIds: [String!]
+  programDetoxServiceIds: [String!]
+  programFeatureIds: [String!]
+  programLanguageIds: [String!]
+  programLevelOfCareIds: [String!]
+  programMATTypeIds: [String!]
+  programPopulationIds: [String!]
+  programServiceIds: [String!]
+  programSubstanceIds: [String!]
+  radiusKm: Float
+  rehabOrgIds: [String!]
+  search: String
+  skip: Float
+  slugs: [String!]
+  states: [String!]
+  take: Float
+}
+
+type RehabCampusLanguage {
+  campusId: String!
+  language: Language
+  languageId: String!
+}
+
+type RehabCampusLuxuryTier {
+  campusId: String!
+  luxuryTier: LuxuryTier
+  luxuryTierId: String!
+}
+
+type RehabCampusPopulation {
+  campusId: String!
+  population: Population
+  populationId: String!
+}
+
+type RehabCampusSettingStyle {
+  campusId: String!
+  settingStyle: SettingStyle
+  settingStyleId: String!
+}
+
+type RehabDetoxService {
+  detoxService: DetoxService
+  detoxServiceId: String!
+  rehabId: String!
+}
+
+type RehabEnvironment {
+  environment: Environment
+  environmentId: String!
+  rehabId: String!
+}
+
+type RehabInsurancePayer {
+  acceptsOutOfNetworkWithOopCap: Boolean
+  averageAdmissionPrice: Int
+  campus: RehabCampus
+  campusId: String
+  createdAt: DateTime!
+  estimatedPatientOopMax: Int
+  estimatedPatientOopMin: Int
+  id: ID!
+  insurancePayer: InsurancePayer
+  insurancePayerId: String!
+  networkStatus: NetworkStatus!
+  notes: String
+  overview: String
+  program: RehabProgram
+  programId: String
+  rehab: RehabOrg
+  rehabId: String!
+  requiresPreauth: Boolean
+  scope: InsuranceScope!
+  updatedAt: DateTime!
+}
+
+input RehabInsurancePayerConnectOrCreateInput {
+  acceptsOutOfNetworkWithOopCap: Boolean
+  averageAdmissionPrice: Int
+  estimatedPatientOopMax: Int
+  estimatedPatientOopMin: Int
+  insurancePayer: InsurancePayerConnectOrCreateInput!
+  networkStatus: NetworkStatus
+  notes: String
+  overview: String
+  requiresPreauth: Boolean
+  scope: InsuranceScope
+}
+
+type RehabLanguage {
+  language: Language
+  languageId: String!
+  rehabId: String!
+}
+
+type RehabLevelOfCare {
+  levelOfCare: LevelOfCare
+  levelOfCareId: String!
+  rehabId: String!
+}
+
+type RehabLuxuryTier {
+  luxuryTier: LuxuryTier
+  luxuryTierId: String!
+  rehabId: String!
+}
+
+type RehabOrg {
+  """
+  Accreditations held by this rehab
+  """
+  accreditations: [RehabAccreditation!]
+  amenities: [RehabAmenity!]
+  baseCurrency: String
+  campuses: [RehabCampus!]
+  city: String
+  country: String
+  createdAt: DateTime!
+  defaultTimeZone: String
+  description: String
+  detoxServices: [RehabDetoxService!]
+  environments: [RehabEnvironment!]
+  fullPrivatePrice: Int
+  galleryImageUrls: [String!]
+  heroImageUrl: String
+  id: ID!
+  insurancePayers: [RehabInsurancePayer!]
+  isNonProfit: Boolean
+  languages: [RehabLanguage!]
+  legalName: String
+  levelsOfCare: [RehabLevelOfCare!]
+  luxuryTiers: [RehabLuxuryTier!]
+  mainEmail: String
+  mainPhone: String
+  name: String!
+  npi_number: String
+  orgAccreditations: [RehabAccreditation!]
+  orgReviews: [OrgReview!]
+  orgStories: [OrgStory!]
+  orgTestimonials: [OrgTestimonial!]
+  otherSourceUrls: [String!]!
+  parentCompany: ParentCompany
+  parentCompanyId: String
+  paymentOptions: [RehabPaymentOption!]
+  populations: [RehabPopulation!]
+  primarySourceUrl: String
+
+  """
+  Program features and operational characteristics
+  """
+  programFeatures: [RehabProgramFeatureGlobal!]
+  programFeaturesGlobal: [RehabProgramFeatureGlobal!]
+  services: [RehabService!]
+  settingStyles: [RehabSettingStyle!]
+  slug: String!
+  socialMediaProfiles: [SocialMediaProfile!]
+  state: String
+  tagline: String
+  updatedAt: DateTime!
+  verifiedExists: Boolean!
+  websiteUrl: String
+  yearFounded: Int
+  youtubeChannels: [YoutubeChannel!]
+  zip: String
+}
+
+input RehabOrgFilterInput {
+  accreditationIds: [String!]
+  amenityIds: [String!]
+  campusStates: [String!]
+  cities: [String!]
+  countries: [String!]
+  detoxServiceIds: [String!]
+  environmentIds: [String!]
+  fullPrivatePrice: IntRangeFilter
+  ids: [ID!]
+  insurancePayerIds: [String!]
+  isNonProfit: BooleanFilter
+  languageIds: [String!]
+  legalName: StringFilter
+  levelOfCareIds: [String!]
+  luxuryTierIds: [String!]
+  name: StringFilter
+  npiNumber: StringFilter
+  paymentOptionIds: [String!]
+  populationIds: [String!]
+  programFeatureGlobalIds: [String!]
+  programLevelOfCareIds: [String!]
+  programMATTypeIds: [String!]
+  programSubstanceIds: [String!]
+  search: String
+  serviceIds: [String!]
+  settingStyleIds: [String!]
+  skip: Float
+  slugs: [String!]
+  states: [String!]
+  take: Float
+  verifiedExists: BooleanFilter
+  yearFounded: IntRangeFilter
+  zips: [String!]
+}
+
+type RehabPaymentOption {
+  campus: RehabCampus
+  campusId: String
+  createdAt: DateTime!
+  descriptionOverride: String
+  id: ID!
+  paymentOption: PaymentOption
+  paymentOptionId: String!
+  program: RehabProgram
+  programId: String
+  rehab: RehabOrg
+  rehabId: String!
+  updatedAt: DateTime!
+}
+
+input RehabPaymentOptionConnectOrCreateInput {
+  descriptionOverride: String
+  paymentOption: PaymentOptionConnectOrCreateInput!
+}
+
+type RehabPopulation {
+  population: Population
+  populationId: String!
+  rehabId: String!
+}
+
+type RehabProgram {
+  acceptsCourtOrdered: Boolean
+  acceptsMedicallyComplex: Boolean
+  acceptsSelfReferral: Boolean
+  campus: RehabCampus!
+  campusId: String!
+  checkInDays: [String]
+  clinicalFocusSummary: String
+  createdAt: DateTime!
+  description: String
+  galleryImageUrls: [String!]
+  hasOnsiteMD: Boolean
+  hasTwentyFourHourNursing: Boolean
+  heroImageUrl: String
+  id: ID!
+  intakeEmail: String
+  intakePhone: String
+  isDetoxPrimary: Boolean
+  isMATProgram: Boolean
+  levelOfCare: LevelOfCare!
+  levelOfCareId: String!
+  maxLengthOfStayDays: Int
+  minLengthOfStayDays: Int
+  name: String!
+  programAmenities: [RehabProgramAmenity!]
+  programDetoxServices: [RehabProgramDetoxService!]
+  programFeatures: [RehabProgramFeature!]
+  programLanguages: [RehabProgramLanguage!]
+  programMATTypes: [RehabProgramMATType!]
+  programPopulations: [RehabProgramPopulation!]
+  programReviews: [ProgramReview!]
+  programServices: [RehabProgramService!]
+  programStories: [ProgramStory!]
+  programSubstances: [RehabProgramSubstance!]
+  programTestimonials: [ProgramTestimonial!]
+  sessionScheduleSummary: String
+  shortName: String
+  slug: String!
+  staffToPatientRatio: Float
+  targetPopulationSummary: String
+  typicalLengthOfStayDays: Int
+  updatedAt: DateTime!
+  waitlistCategory: WaitlistCategory!
+  waitlistDescription: String
+}
+
+type RehabProgramAmenity {
+  amenity: Amenity
+  amenityId: String!
+  programId: String!
+}
+
+type RehabProgramDetoxService {
+  detoxService: DetoxService
+  detoxServiceId: String!
+  programId: String!
+}
+
+type RehabProgramFeature {
+  programFeature: ProgramFeature
+  programFeatureId: String!
+  programId: String!
+}
+
+type RehabProgramFeatureGlobal {
+  programFeature: ProgramFeature
+  programFeatureId: String!
+  rehabId: String!
+}
+
+input RehabProgramFilterInput {
+  acceptsCourtOrdered: BooleanFilter
+  acceptsMedicallyComplex: BooleanFilter
+  acceptsSelfReferral: BooleanFilter
+  amenityIds: [String!]
+  campusIds: [String!]
+  detoxServiceIds: [String!]
+  featureIds: [String!]
+  hasOnsiteMD: BooleanFilter
+  hasTwentyFourHourNursing: BooleanFilter
+  ids: [ID!]
+  insurancePayerIds: [String!]
+  isDetoxPrimary: BooleanFilter
+  isMATProgram: BooleanFilter
+  languageIds: [String!]
+  levelOfCareIds: [String!]
+  matTypeIds: [String!]
+  maxLengthOfStayDays: IntRangeFilter
+  minLengthOfStayDays: IntRangeFilter
+  name: StringFilter
+  paymentOptionIds: [String!]
+  populationIds: [String!]
+  rehabOrgIds: [String!]
+  search: String
+  serviceIds: [String!]
+  sessionScheduleContains: String
+  skip: Float
+  slugs: [String!]
+  staffToPatientRatio: FloatRangeFilter
+  substanceIds: [String!]
+  take: Float
+  typicalLengthOfStayDays: IntRangeFilter
+  waitlistCategories: [WaitlistCategory!]
+}
+
+type RehabProgramLanguage {
+  language: Language
+  languageId: String!
+  programId: String!
+}
+
+type RehabProgramMATType {
+  matType: MATType
+  matTypeId: String!
+  programId: String!
+}
+
+type RehabProgramPopulation {
+  population: Population
+  populationId: String!
+  programId: String!
+}
+
+type RehabProgramService {
+  programId: String!
+  service: Service
+  serviceId: String!
+}
+
+type RehabProgramSubstance {
+  programId: String!
+  substance: Substance
+  substanceId: String!
+}
+
+type RehabService {
+  rehabId: String!
+  service: Service
+  serviceId: String!
+}
+
+type RehabSettingStyle {
+  rehabId: String!
+  settingStyle: SettingStyle
+  settingStyleId: String!
+}
+
+enum ReviewSource {
+  FACEBOOK
+  GOOGLE
+  HEALTHGRADES
+  INTERNAL
+  OTHER
+}
+
+enum ReviewerType {
+  CLINICIAN
+  LOVED_ONE
+  OTHER
+  PATIENT
+}
+
+type Service {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input ServiceConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input ServiceCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input ServiceCreateManyInput {
+  items: [ServiceCreateInput!]!
+}
+
+type SettingStyle {
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input SettingStyleConnectOrCreateInput {
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input SettingStyleCreateInput {
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input SettingStyleCreateManyInput {
+  items: [SettingStyleCreateInput!]!
+}
+
+type SocialMediaProfile {
+  createdAt: DateTime!
+  id: ID!
+  parentCompanyId: String
+  platform: String!
+  rehabCampusId: String
+  rehabOrgId: String
+  updatedAt: DateTime!
+  url: String!
+}
+
+input SocialMediaProfileConnectOrCreateInput {
+  id: String
+  platform: String!
+  url: String!
+}
+
+enum StoryType {
+  FAMILY_STORY
+  ORIGIN_STORY
+  OTHER
+  OUTCOME_CASE
+  PATIENT_STORY
+  PROGRAM_OVERVIEW
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  in: [String!]
+  insensitive: Boolean
+  startsWith: String
+}
+
+type Substance {
+  category: String
+  description: String
+  displayName: String!
+  id: ID!
+  slug: String!
+}
+
+input SubstanceConnectOrCreateInput {
+  category: String
+  description: String
+  displayName: String
+  slug: String!
+}
+
+input SubstanceCreateInput {
+  category: String
+  description: String
+  displayName: String!
+  slug: String!
+}
+
+input SubstanceCreateManyInput {
+  items: [SubstanceCreateInput!]!
 }
 
 input UpdateInsuranceProviderInput {
@@ -103,4 +1588,165 @@ input UpdateProspectiveRehabInput {
   state: String
   taxonomy_code: String
   taxonomy_desc: String
+}
+
+input UpsertRehabCampusInput {
+  acceptsWalkIns: Boolean
+  amenities: [AmenityConnectOrCreateInput!]
+  bedsDetox: Int
+  bedsOutpatientCapacity: Int
+  bedsResidential: Int
+  bedsTotal: Int
+  city: String
+  country: String
+  description: String
+  directionsSummary: String
+  displayName: String
+  email: String
+  environments: [EnvironmentConnectOrCreateInput!]
+  hasOnsiteMD: Boolean
+  hasTwentyFourHourNursing: Boolean
+  id: String!
+  languages: [LanguageConnectOrCreateInput!]
+  latitude: Float
+  longitude: Float
+  luxuryTiers: [LuxuryTierConnectOrCreateInput!]
+  name: String
+  phone: String
+  populations: [PopulationConnectOrCreateInput!]
+  postalCode: String
+  primaryEnvironmentSlug: String
+  primaryLuxuryTierSlug: String
+  primarySettingStyleSlug: String
+  rehabOrgId: String
+  rehabOrgSlug: String
+  reviews: [CampusReviewCreateInput!]
+  settingStyles: [SettingStyleConnectOrCreateInput!]
+  slug: String
+  socialMediaProfiles: [SocialMediaProfileConnectOrCreateInput!]
+  state: String
+  stories: [CampusStoryCreateInput!]
+  street: String
+  testimonials: [CampusTestimonialCreateInput!]
+  timeZone: String
+  visitingHours: String
+}
+
+input UpsertRehabOrgInput {
+  accreditations: [AccreditationConnectOrCreateInput!]
+  amenities: [AmenityConnectOrCreateInput!]
+  baseCurrency: String
+  campuses: [RehabCampusConnectOrCreateInput!]
+  city: String
+  country: String
+  defaultTimeZone: String
+  description: String
+  detoxServices: [DetoxServiceConnectOrCreateInput!]
+  environments: [EnvironmentConnectOrCreateInput!]
+  fullPrivatePrice: Int
+  galleryImageUrls: [String!]
+  heroImageUrl: String
+  id: String!
+  insurancePayers: [RehabInsurancePayerConnectOrCreateInput!]
+  isNonProfit: Boolean
+  languages: [LanguageConnectOrCreateInput!]
+  legalName: String
+  levelsOfCare: [LevelOfCareConnectOrCreateInput!]
+  luxuryTiers: [LuxuryTierConnectOrCreateInput!]
+  mainEmail: String
+  mainPhone: String
+  name: String
+  npi_number: String
+  otherSourceUrls: [String!]
+  parentCompany: ParentCompanyConnectOrCreateInput
+  paymentOptions: [RehabPaymentOptionConnectOrCreateInput!]
+  populations: [PopulationConnectOrCreateInput!]
+  primarySourceUrl: String
+  programFeaturesGlobal: [ProgramFeatureGlobalConnectOrCreateInput!]
+  reviews: [OrgReviewCreateInput!]
+  services: [ServiceConnectOrCreateInput!]
+  settingStyles: [SettingStyleConnectOrCreateInput!]
+  slug: String
+  socialMediaProfiles: [SocialMediaProfileConnectOrCreateInput!]
+  state: String
+  stories: [OrgStoryCreateInput!]
+  tagline: String
+  testimonials: [OrgTestimonialCreateInput!]
+  verifiedExists: Boolean
+  websiteUrl: String
+  yearFounded: Int
+  youtubeChannels: [YoutubeChannelConnectOrCreateInput!]
+  zip: String
+}
+
+input UpsertRehabProgramInput {
+  acceptsCourtOrdered: Boolean
+  acceptsMedicallyComplex: Boolean
+  acceptsSelfReferral: Boolean
+  amenities: [AmenityConnectOrCreateInput!]
+  campusId: String
+  campusSlug: String
+  checkInDays: [String!]
+  clinicalFocusSummary: String
+  description: String
+  detoxServices: [DetoxServiceConnectOrCreateInput!]
+  features: [ProgramFeatureConnectOrCreateInput!]
+  hasOnsiteMD: Boolean
+  hasTwentyFourHourNursing: Boolean
+  id: String!
+  intakeEmail: String
+  intakePhone: String
+  isDetoxPrimary: Boolean
+  isMATProgram: Boolean
+  languages: [LanguageConnectOrCreateInput!]
+  levelOfCareSlug: String
+  matTypes: [MATTypeConnectOrCreateInput!]
+  maxLengthOfStayDays: Int
+  minLengthOfStayDays: Int
+  name: String
+  populations: [PopulationConnectOrCreateInput!]
+  reviews: [ProgramReviewCreateInput!]
+  services: [ServiceConnectOrCreateInput!]
+  sessionScheduleSummary: String
+  shortName: String
+  slug: String
+  staffToPatientRatio: Float
+  stories: [ProgramStoryCreateInput!]
+  substances: [SubstanceConnectOrCreateInput!]
+  targetPopulationSummary: String
+  testimonials: [ProgramTestimonialCreateInput!]
+  typicalLengthOfStayDays: Int
+  waitlistCategory: WaitlistCategory
+  waitlistDescription: String
+}
+
+enum WaitlistCategory {
+  LONG
+  MEDIUM
+  NONE
+  SHORT
+}
+
+type YoutubeChannel {
+  createdAt: DateTime!
+  id: ID!
+  parentCompanyId: String
+  rehabOrgId: String
+  updatedAt: DateTime!
+  url: String!
+  videos: [YoutubeVideo!]
+}
+
+input YoutubeChannelConnectOrCreateInput {
+  id: String
+  url: String!
+}
+
+type YoutubeVideo {
+  channelId: String
+  createdAt: DateTime!
+  id: ID!
+  title: String
+  updatedAt: DateTime!
+  url: String!
 }

@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from pathlib import Path   
 import os  
 from graphql_client.client import RehabApiClient   
-from graphql_client.input_types import CreateProspectiveRehabInput  
+from graphql_client.input_types import CreateProspectiveRehabInput, CreateRehabOrgInput  
 from graphql_client.exceptions import GraphQLClientError  
 from typing import Optional, List
 
@@ -15,8 +15,20 @@ load_dotenv(dotenv_path=here / ".env")
 
 GRAPHQL_ENDPOINT = os.getenv("GRAPHQL_ENDPOINT") or "http://localhost:3000/graphql"
 
-graphql_client = RehabApiClient(GRAPHQL_ENDPOINT) 
+graphql_client = RehabApiClient(GRAPHQL_ENDPOINT)    
 
+
+
+async def create_rehab_org_with_connect_or_create(data: CreateRehabOrgInput):  
+
+    try:   
+        resp = await graphql_client.create_rehab_org_with_connect_or_create(data=data)   
+        return resp 
+
+        
+    except (GraphQLClientError, Exception) as e: 
+        print(f"Error creating rehab org: {e}") 
+        return None 
 
 
 async def batch_create_rehabs(data: List[CreateProspectiveRehabInput], chunk_size: int = 100): 

@@ -1,166 +1,133 @@
-query GetRehabs($search: String, $skip: Int, $take: Int, $cursorId: Int) {
-  rehabs(search: $search, skip: $skip, take: $take, cursorId: $cursorId) {
-    id
+mutation CreateProspectiveRehab($data: CreateProspectiveRehabInput!) {
+  createProspectiveRehab(data: $data) {
     npi_number
-    organization_name
     address
+    city
+    id
+    ingested
+    organization_name
+    phone
+    postal_code
+    state
+  }
+}
+
+mutation CreateManyProspectiveRehabs($data: [CreateProspectiveRehabInput!]!) {
+  createManyProspectiveRehabs(data: $data) {
+    npi_number
     city
     state
     postal_code
-    phone
-    taxonomy_code
-    taxonomy_desc
-    last_updated
-    ingested
-  }
-}
-
-query GetRehabById($id: Int!) {
-  rehab(id: $id) {
-    id
-    npi_number
-    organization_name
     address
-    city
-    state
-    postal_code
-    phone
     taxonomy_code
-    taxonomy_desc
-    last_updated
-    ingested
   }
 }
 
-# ============================
-# Prospective Rehab MUTATIONS
-# ============================
-
-mutation CreateRehab($data: CreateProspectiveRehabInput!) {
-  createRehab(data: $data) {
-    id
-    npi_number
-    organization_name
-    address
-    city
-    state
-    postal_code
-    phone
-    taxonomy_code
-    taxonomy_desc
-    last_updated
-    ingested
-  }
-}
-
-mutation CreateManyRehabs($data: [CreateProspectiveRehabInput!]!) {
-  createManyRehabs(data: $data) {
-    id
-    npi_number
-    organization_name
-    address
-    city
-    state
-    postal_code
-    phone
-    taxonomy_code
-    taxonomy_desc
-    last_updated
-    ingested
-  }
-}
-
-mutation UpdateRehab($id: Int!, $data: UpdateProspectiveRehabInput!) {
-  updateRehab(id: $id, data: $data) {
-    id
-    npi_number
-    organization_name
-    address
-    city
-    state
-    postal_code
-    phone
-    taxonomy_code
-    taxonomy_desc
-    last_updated
-    ingested
-  }
-}
-
-mutation DeleteRehab($id: Int!) {
-  deleteRehab(id: $id) {
-    id
-    npi_number
-    organization_name
-    address
-    city
-    state
-    postal_code
-    phone
-    taxonomy_code
-    taxonomy_desc
-    last_updated
-    ingested
-  }
-}
-
-# ============================
-# Insurance Provider QUERIES
-# ============================
-
-query GetInsuranceProviders($search: String, $skip: Int, $take: Int) {
-  insuranceProviders(search: $search, skip: $skip, take: $take) {
-    id
-    payer_code
-    payer_name
-    eligibility
-    type
-  }
-}
-
-query GetInsuranceProviderById($id: Int!) {
-  insuranceProvider(id: $id) {
-    id
-    payer_code
-    payer_name
-    eligibility
-    type
-  }
-}
-
-# ============================
-# Insurance Provider MUTATIONS
-# ============================
-
-mutation CreateInsuranceProvider($data: CreateInsuranceProviderInput!) {
-  createInsuranceProvider(data: $data) {
-    id
-    payer_code
-    payer_name
-    eligibility
-    type
-  }
-}
-
-mutation UpdateInsuranceProvider(
-  $id: Int!
-  $data: UpdateInsuranceProviderInput!
+mutation UpdateProspectiveRehab(
+  $data: UpdateProspectiveRehabInput!
+  $updateProspectiveRehabId: Int!
 ) {
-  updateInsuranceProvider(id: $id, data: $data) {
+  updateProspectiveRehab(data: $data, id: $updateProspectiveRehabId) {
     id
-    payer_code
-    payer_name
-    eligibility
-    type
+    ingested
+    npi_number
+    city
+    state
+    postal_code
+    organization_name
   }
 }
 
-mutation DeleteInsuranceProvider($id: Int!) {
-  deleteInsuranceProvider(id: $id) {
+mutation CreateRehabOrgWithConnectOrCreate($data: CreateRehabOrgInput!) {
+  createRehabOrgWithConnectOrCreate(data: $data) {
+    npi_number
+    isNonProfit
+    createdAt
+    description
     id
-    payer_code
-    payer_name
-    eligibility
-    type
+    legalName
+    name
+    mainEmail
+    mainPhone
+    slug
+    state
+    city
+    country
+
+    websiteUrl
+    tagline
+    fullPrivatePrice
+  }
+}
+
+mutation UpsertRehabOrgWithConnectOrCreate($data: UpsertRehabOrgInput!) {
+  upsertRehabOrgWithConnectOrCreate(data: $data) {
+    city
+    country
+    description
+    fullPrivatePrice
+    id
+    isNonProfit
+    mainEmail
+    mainPhone
+    name
+    npi_number
+    websiteUrl
+    state
+    zip
+    slug
+    updatedAt
+  }
+}
+
+mutation CreateRehabCampusWithConnectOrCreate($data: CreateRehabCampusInput!) {
+  createRehabCampusWithConnectOrCreate(data: $data) {
+    bedsTotal
+    city
+    country
+    id
+    name
+    latitude
+    longitude
+    street
+    state
+    slug
+  }
+}
+
+mutation UpsertRehabCampusWithConnectOrCreate($data: UpsertRehabCampusInput!) {
+  upsertRehabCampusWithConnectOrCreate(data: $data) {
+    street
+    state
+    slug
+    postalCode
+    phone
+    name
+    longitude
+    latitude
+    id
+    displayName
+    description
+    city
+    country
+  }
+}
+
+mutation CreateRehabProgramWithConnectOrCreate(
+  $data: CreateRehabProgramInput!
+) {
+  createRehabProgramWithConnectOrCreate(data: $data) {
+    id
+    name
+    slug
+  }
+}
+
+mutation UpsertRehabProgramWithConnectOrCreate(
+  $data: UpsertRehabProgramInput!
+) {
+  upsertRehabProgramWithConnectOrCreate(data: $data) {
+    name
+    id
   }
 }
